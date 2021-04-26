@@ -1,4 +1,5 @@
 #include "lua_opengl.h"
+#include "lib_opengl.h"
 
 //void glActiveTexture(GLenum texture)
 //glActiveTexture(<int>texture)
@@ -2326,6 +2327,7 @@ static const luaL_Reg _ll_funcs[] = {
 
 int luaopen_opengl(lua_State* L) {
     luaL_newlib(L, _ll_funcs);
+    luaopen_opengl_const(L);
     return 1;
 }
 

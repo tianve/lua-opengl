@@ -111,22 +111,23 @@ local glVertexAttribPointer = {
 ]]}
 
 
+local srclist = {}
+local deflist = {
+    glShaderSource, 
+    glGetAttachedShaders, 
+    glReadPixels, 
+    glDrawElements, 
+    glVertexAttribPointer, 
+}
 
-return function(srclist)
-    local list = {
-        glShaderSource, 
-        glGetAttachedShaders, 
-        glReadPixels, 
-        glDrawElements, 
-        glVertexAttribPointer, 
-    }
-
-    for i,v in ipairs(list) do
-        v.func = "_llfunc_" ..  v.name
-        v.text = string.format("static int %s(lua_State* L) {\r\n%s}", v.func, v.code)
-        table.insert(srclist, v)
-    end
+for i,v in ipairs(deflist) do
+    v.func = "_llfunc_" ..  v.name
+    v.text = string.format("static int %s(lua_State* L) {\r\n%s}", v.func, v.code)
+    table.insert(srclist, v)
 end
+
+return srclist
+
 
 
 

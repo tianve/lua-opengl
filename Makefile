@@ -11,6 +11,7 @@ LDFLAG := -I. -L. -llua -lglew32 -lopengl32 -shared
          
 
 CCSRCS := src/lua_opengl.c \
+        src/lua_opengl_const.c \
 
 	    
 CCOBJS := $(CCSRCS:%.c=obj/%.o)

@@ -472,13 +472,15 @@ local function gen_by_def(def)
 end
 
 
-return function(srclist)
-    local deflist = load_def_list()
-    for i,v in ipairs(deflist) do
-        local desc, func, text, docs = gen_by_def(v)
-        table.insert(srclist, {name=v.name, desc=desc, func=func, text=text, docs = docs})
-    end
+local srclist = {}
+local deflist = load_def_list()
+for i,v in ipairs(deflist) do
+    local desc, func, text, docs = gen_by_def(v)
+    table.insert(srclist, {name=v.name, desc=desc, func=func, text=text, docs = docs})
 end
+
+return srclist
+
 
 
 

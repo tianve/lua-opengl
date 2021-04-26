@@ -10,13 +10,14 @@
 #include "lualib.h"
 #include "lauxlib.h"
 
-#include "lib_opengl.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+int luaopen_opengl_const(lua_State *L);
+
 int luaopen_opengl(lua_State *L);
+
 
 #ifdef __cplusplus
 }
